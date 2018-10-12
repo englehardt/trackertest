@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en-US" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+      <p>Trying to set cookie with value:</p><pre id='cookie_set'></pre>
+      <p>Your current non-HTTPOnly cookies are:</p><pre id='cookie_read'></pre>
+      <button onclick='setCookie()'>Set Cookie</button><br />
+
+      <button onclick='requestStorageAccess()'>Set Cookie</button><br />
+      <p>Status of requestStorageAccess():</p><pre id='request_storage_access'></pre><br />
+
+      <button onclick='hasStorageAccess()'>Set Cookie</button><br />
+      <p>Status of hasStorageAccess():<pre id='has_storage_access'></pre><br />
+
+      <script>
+        // Try to set a cookie
+        function setCookie() {
+          var randVal = Math.random();
+          var set = document.getElementById('cookie_set');
+          set.innerHTML = randVal;
+          document.cookie = 'testPageCookie='+randVal;
+
+          // Get a cookie
+          var get = document.getElementById('cookie_read');
+          var cookies = document.cookie;
+          get.innerHTML = cookies;
+        }
+
+        function requestStorageAccess() {
+          var result = document.getElementById('request_storage_access');
+          result.innerHTML = 'test';
+        }
+
+        function hasStorageAccess() {
+          var result = document.getElementById('has_storage_access');
+          result.innerHTML = 'test';
+        }
+      </script>
+    </body>
+</html>
