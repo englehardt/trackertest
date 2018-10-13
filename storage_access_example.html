@@ -30,12 +30,15 @@
         function tryToAccess() {
           document.hasStorageAccess().then(hasAccess => {
             if (!hasAccess) {
+              console.log("We don't have storage access, let's request it.");
               return document.requestStorageAccess();
             }
-          }).then(
-            _ => {console.log("Access granted!")},
-            _ => {console.log("Access denied!")}
-          ).catch(_ => {
+          }).then(_ => {
+            console.log("Access request granted!")
+            console.log("document.cookie" + document.cookie);
+          },_ => {
+            console.log("Access request denied!")
+          }).catch(_ => {
             console.log("Error obtaining storage access");
           });
         }
