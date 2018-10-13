@@ -33,14 +33,14 @@
             if (!hasAccess) {
               console.log("We don't have storage access, let's request it.");
               return document.requestStorageAccess();
+            }, anError => {
+              console.log("Error obtaining storage access:", anError);
             }
           }).then(_ => {
             console.log("Access request granted!")
             console.log("document.cookie", document.cookie);
           },_ => {
             console.log("Access request denied!")
-          }).catch(_ => {
-            console.log("Error obtaining storage access");
           });
         }
       </script>
