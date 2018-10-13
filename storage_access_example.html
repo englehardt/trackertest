@@ -33,9 +33,9 @@
               return document.requestStorageAccess();
             }
           }).then(
-            _ => { console.log("Access granted!"),
-            _ => { console.log("Access denied!")
-          }).catch(_ => {
+            _ => {console.log("Access granted!")},
+            _ => {console.log("Access denied!")}
+          ).catch(_ => {
             console.log("Error obtaining storage access");
           });
         }
