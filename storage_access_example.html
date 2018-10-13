@@ -28,14 +28,15 @@
         }
 
         function tryToAccess() {
-          document.hasStorageAccess().then(success => {
-            if (!success) {
+          document.hasStorageAccess().then(hasAccess => {
+            if (!hasAccess) {
               return document.requestStorageAccess();
             }
+          }).then(
+            _ => { console.log("Access granted!"),
+            _ => { console.log("Access denied!")
           }).catch(_ => {
             console.log("Error obtaining storage access");
-          }).then(_ => {
-            console.log("Access granted!");
           });
         }
       </script>
