@@ -58,7 +58,7 @@
         function setLocalStorage(reset=false) {
           var foo = window.localStorage.getItem('foo');
           var msg = document.getElementById('ls_message');
-          if (foo === undefined || reset === true) {
+          if (foo === null || reset === true) {
             msg.innerHTML = 'LocalStorage key foo not yet set...';
             var set_message_div = document.getElementById('set_ls_message');
             set_message_div.style = "";
@@ -84,7 +84,7 @@
         function setSessionStorage(reset=false) {
           var foo = window.sessionStorage.getItem('foo');
           var msg = document.getElementById('ss_message');
-          if (foo === undefined || reset === true) {
+          if (foo === null || reset === true) {
             msg.innerHTML = 'SessionStorage key foo not yet set...';
             var set_message_div = document.getElementById('set_ss_message');
             set_message_div.style = "";
