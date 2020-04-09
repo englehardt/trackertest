@@ -58,7 +58,7 @@
         function setLocalStorage(reset=false) {
           var foo = window.localStorage.getItem('foo');
           var msg = document.getElementById('ls_message');
-          if (foo === "" || reset === true) {
+          if (foo === undefined || reset === true) {
             msg.innerHTML = 'LocalStorage key foo not yet set...';
             var set_message_div = document.getElementById('set_ls_message');
             set_message_div.style = "";
