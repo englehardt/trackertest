@@ -16,6 +16,9 @@
           if (cookies === "" || reset === true) {
             msg.innerHTML = 'Cookies not yet set, setting a new cookie...';
 
+            var set_message_div = document.getElementById('set_message');
+            set_message_div.style = "";
+
             // Try to set a cookie
             var randVal = Math.random();
             var set = document.getElementById('cookie_set');
