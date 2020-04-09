@@ -7,8 +7,8 @@
       <p><pre id="message"></pre></p>
       <div id="set_message"><p>Trying to set cookie with value:</p><pre id='cookie_set'></pre></div>
       <p>Your current non-HTTPOnly cookies are:</p><pre id='cookie_read'></pre>
-      <button onclick="setAllStorageLocations(false);">rerun</button>
-      <button onclick="setAllStorageLocations(true);">reset</button>
+      <button onclick="setCookies(false);">rerun</button>
+      <button onclick="setCookies(true);">reset</button>
       <script>
         function setCookies(reset=false) {
           var cookies = document.cookie;
@@ -39,19 +39,7 @@
             get.innerHTML = cookies;
           }
         }
-        function setLocalStorage(reset=false) {
-        }
-        function setSessionStorage(reset=false) {
-        }
-        function setIndexedDB(reset=false) {
-        }
-        function setAllStorageLocations(reset=false) {
-          setCookies(reset);
-          setLocalStorage(reset);
-          setSessionStorage(reset);
-          setIndexedDB(reset);
-        }
-        setAllStorageLocations(false);
+        setCookies(false);
       </script>
     </body>
 </html>
