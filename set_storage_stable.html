@@ -2,6 +2,7 @@
 <html lang="en-US" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/idb-keyval@3/dist/idb-keyval-iife.min.js"></script>
     </head>
     <body>
       <h4>cookies</h4>
@@ -21,8 +22,8 @@
 
       <h4>Indexed DB</h4>
       <p id="idb_message"></p>
-      <div id="set_idb_message"><p>Trying to set indexedDB key foo=</p><pre id='idb_set'></pre></div>
-      <p>In IndexedDB foo=</p><pre id='idb_read'></pre>
+      <div id="set_idb_message"><p>Trying to set foo in indexedDB to:</p><pre id='idb_set'></pre></div>
+      <p>Current IndexedDB</p><pre id='idb_read'></pre>
 
       <button onclick="setAllStorageLocations(false);">rerun</button>
       <button onclick="setAllStorageLocations(true);">reset</button>
@@ -107,7 +108,31 @@
             get.innerHTML = 'foo='+foo;
           }
         }
-        function setIndexedDB(reset=false) {
+        async function setIndexedDB(reset) {
+          var foo = await idbKeyval.get('foo');
+          var msg = document.getElementById('idb_message');
+          if (foo === undefined || reset === true) {
+            msg.innerHTML = 'IndexedDB key foo not yet set...';
+            var set_message_div = document.getElementById('set_idb_message');
+            set_message_div.style = "";
+
+            // Set a new value for foo
+            var set = document.getElementById('idb_set');
+            set.innerHTML = newRandVal;
+            await idbKeyval.set('foo', newRandVal);
+
+            // Get value of foo
+            foo = await idbKeyval.get('foo');
+            var get = document.getElementById('idb_read');
+            get.innerHTML = 'foo='+foo;
+          } else {
+            msg.innerHTML = 'IndexedDB key foo already written, NOT overwriting...';
+            var set_message_div = document.getElementById('set_idb_message');
+            set_message_div.style = "display: none;";
+
+            var get = document.getElementById('idb_read');
+            get.innerHTML = 'foo='+foo;
+          }
         }
         function setAllStorageLocations(reset=false) {
           setCookies(reset);
